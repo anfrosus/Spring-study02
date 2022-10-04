@@ -1,6 +1,8 @@
 package com.example.spring_hw.controller;
 
 import com.example.spring_hw.dto.BoardDto;
+import com.example.spring_hw.dto.BoardResponseDto;
+import com.example.spring_hw.dto.OneResponseDto;
 import com.example.spring_hw.entity.BoardEntity;
 import com.example.spring_hw.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +17,12 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/api/boards")
-    public List<BoardEntity> viewAll() {
+    public BoardResponseDto viewAll() {
         return boardService.findAll();
     }
 
     @GetMapping("/api/boards/{id}")
-    public BoardEntity viewOne(@PathVariable Long id) {
+    public OneResponseDto viewOne(@PathVariable Long id) {
         return boardService.findById(id);
     }
 

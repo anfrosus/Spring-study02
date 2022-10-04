@@ -1,6 +1,8 @@
 package com.example.spring_hw.service;
 
 import com.example.spring_hw.dto.BoardDto;
+import com.example.spring_hw.dto.BoardResponseDto;
+import com.example.spring_hw.dto.OneResponseDto;
 import com.example.spring_hw.entity.BoardEntity;
 import com.example.spring_hw.repository.BoardRepository;
 
@@ -16,17 +18,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
+    private final BoardResponseDto boardResponseDto;
+    private final OneResponseDto oneResponseDto;
 
     @Transactional
-    public List<BoardEntity> findAll() {
-        return new ArrayList<>(boardRepository.findByOrderByCreateAtDesc());
+    public BoardResponseDto findAll() {
+        boardResponseDto.setBoardEntity(boardRepository.findByOrderByCreateAtDesc());
+        return boardResponseDto;
     }
 
     @Transactional
-    public BoardEntity findById(Long id) {
-        return boardRepository.findById(id).orElseThrow(
+    public OneResponseDto findById(Long id) {
+        oneResponseDto.setBoardEntity(boardRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다.")
-        );
+        ));
+        return oneResponseDto;
     }
 
     @Transactional
