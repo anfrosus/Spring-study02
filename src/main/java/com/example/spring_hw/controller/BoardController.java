@@ -14,32 +14,32 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/api/post")
+    @GetMapping("/api/boards")
     public List<BoardEntity> viewAll() {
         return boardService.findAll();
     }
 
-    @GetMapping("/api/post/{id}")
+    @GetMapping("/api/boards/{id}")
     public BoardEntity viewOne(@PathVariable Long id) {
         return boardService.findById(id);
     }
 
-    @PostMapping("/api/post")
+    @PostMapping("/api/boards")
     public Long create(@RequestBody BoardDto boardDto) {
         return boardService.save(boardDto);
     }
 
-    @PutMapping("/api/post/{id}")
+    @PutMapping("/api/boards/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardDto boardDto) {
         return boardService.update(id, boardDto);
     }
 
-    @PostMapping("/api/post/{id}")
+    @PostMapping("/api/boards/{id}")
     public boolean check(@PathVariable Long id, @RequestBody BoardDto boardDto) {
         return boardService.check(id, boardDto);
     }
 
-    @DeleteMapping("/api/post/{id}")
+    @DeleteMapping("/api/boards/{id}")
     public Long deleteOne(@PathVariable Long id) {
         return boardService.deleteById(id);
     }
