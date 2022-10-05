@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor      //아마도 TimeStamped 가 기본생성자를 가지고 있기 때문에 필요한듯.
 public class BoardEntity extends TimeStamped{
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,13 +28,6 @@ public class BoardEntity extends TimeStamped{
     @JsonIgnore
     @Column(nullable = false)
     private int password;
-
-    public BoardEntity(String title, String content, String author, int password) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.password = password;
-    }
 
     public BoardEntity (BoardDto boardDto) {
         this.author = boardDto.getAuthor();

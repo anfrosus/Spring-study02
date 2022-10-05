@@ -1,6 +1,5 @@
 package com.example.spring_hw.dto;
 
-import com.example.spring_hw.entity.BoardEntity;
 import lombok.Getter;
 
 @Getter
