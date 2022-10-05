@@ -3,6 +3,7 @@ package com.example.spring_hw.controller;
 import com.example.spring_hw.dto.BoardDto;
 import com.example.spring_hw.dto.BoardResponseDto;
 import com.example.spring_hw.dto.OneResponseDto;
+import com.example.spring_hw.dto.PasswordDto;
 import com.example.spring_hw.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,14 @@ public class BoardController {
     }
 
     @PostMapping("/api/boards/{id}")
-    public boolean check(@PathVariable Long id, @RequestBody BoardDto boardDto) {
-        return boardService.check(id, boardDto);
+    public PasswordDto check2(@PathVariable Long id, @RequestBody BoardDto boardDto) {
+        return new PasswordDto(boardService.check(id, boardDto));
     }
+
+//    @PostMapping("/api/boards/{id}")
+//    public boolean check(@PathVariable Long id, @RequestBody BoardDto boardDto) {
+//        return boardService.check(id, boardDto);
+//    }
 
     @DeleteMapping("/api/boards/{id}")
     public Long deleteOne(@PathVariable Long id) {

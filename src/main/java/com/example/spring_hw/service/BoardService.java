@@ -3,6 +3,7 @@ package com.example.spring_hw.service;
 import com.example.spring_hw.dto.BoardDto;
 import com.example.spring_hw.dto.BoardResponseDto;
 import com.example.spring_hw.dto.OneResponseDto;
+import com.example.spring_hw.dto.PasswordDto;
 import com.example.spring_hw.entity.BoardEntity;
 import com.example.spring_hw.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,7 @@ public class BoardService {
         BoardEntity board1 = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글 존재하지 않습니다."));
         return boardDto.getPassword() == board1.getPassword() ? true : false;
     }
+
 
     @Transactional
     public Long deleteById(Long id) {
