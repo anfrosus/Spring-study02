@@ -22,6 +22,7 @@ public class OneResponseDto {
     public void setBoardEntity(BoardEntity boardEntity) {
         this.boardEntity = boardEntity;
         this.success = true;
+        this.error = boardEntity.getId() != null ? null : 90L;
     }
 
     public OneResponseDto(BoardEntity boardEntity) {

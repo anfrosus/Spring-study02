@@ -10,10 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -23,7 +19,7 @@ public class BoardService {
 
     @Transactional
     public BoardResponseDto findAll() {
-        boardResponseDto.setBoardEntity(boardRepository.findByOrderByCreateAtDesc());
+        boardResponseDto.setBoardEntityList(boardRepository.findByOrderByCreateAtDesc());
         return boardResponseDto;
     }
 
